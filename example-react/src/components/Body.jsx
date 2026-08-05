@@ -567,30 +567,176 @@ export default Body;
 
 
 
-import { useState } from "react";
-import Viewer from "./Viewer";
-import './Body.css';
+// import { useState } from "react";
+// import Viewer from "./Viewer";
+// import './Body.css';
+
+// const Body = () => {
+//    const [number, setNumber] = useState(0);
+
+//    const onIncrease = () => {
+//       setNumber(prev => prev + 1);
+//    };
+
+//    const onDecrease = () => {
+//       setNumber(prev => Math.max(prev - 1, 0));
+//    };
+
+//    return (
+//       <div>
+//          <div>{number}</div>
+//             <Viewer number={number} />
+
+//             <div>
+//                <button type="button" onClick={onDecrease} disabled={number === 0}> - </button>
+//                <button type="button" onClick={onIncrease}> + </button>
+//          </div>
+//       </div>
+//    );
+// };
+
+// export default Body;
+
+// import { useRef, useState } from "react";
+
+// const Body = () => {
+//    const [text, setText] = useState("");
+//    const textRef = useRef(null);
+
+//    const handleOnChange = (e) => {
+//       setText(e.target.value);
+//    };
+
+//    const handleOnClick = () => {
+//    alert(text);
+//    };
+//    return (
+//       <div>
+//          <div>
+//             <input type="text" ref={textRef} value={text} onChange={handleOnChange} />
+//             <button type="button" onClick={handleOnClick}>
+//                작성 완료
+//             </button>
+//          </div>
+//       </div>
+//    );
+// };
+
+// export default Body;
+
+/* 초기화 방법 - 1(useRef 이용) */
+// import { useRef } from "react";
+
+// const Body = () => {
+//    const textRef = useRef(null);
+
+//    const handleOnClick = () => {
+//       alert(textRef.current.value);
+//       textRef.current.value ="";
+//    };
+
+//    return (
+//       <div>
+//          <input type="text" ref={textRef} />
+//          <button type="button" onClick={handleOnClick}>
+//             작성 완료
+//          </button>
+//       </div>
+//    );
+// };
+
+// export default Body;
+
+// 초기화 방법 2
+// import { useState } from "react";
+
+// const Body = () => {
+//    const [text, setText] = useState("");
+
+//    const handleOnChange = (e) => {
+//       setText(e.target.value);
+//    }
+
+//    const handleOnClick = () => {
+//       alert(text);
+//       setText(""); // 상태로 초기화
+//    };
+
+//    return (
+//       <div>
+//          <input type="text" value={text} onChange={handleOnChange} />
+//          <button type="button" onClick={handleOnClick}>
+//             작성 완료
+//          </button>
+//       </div>
+//    );
+// };
+
+// export default Body;
+
+
+// useRef로 포커스 하기
+// import { useRef, useState } from "react";
+
+// const Body = () => {
+//    const [text, setText] = useState("");
+//    const textRef = useRef(null);
+
+//    const handleOnChange = (e) => {
+//       setText(e.target.value);
+//    };
+
+//    const handleOnClick = () => {
+//       if (text.trim().length < 5) {
+//          textRef.current.focus();
+//       } else {
+//          alert(text);
+//          setText("");
+//       }
+//    };
+
+//    return (
+//       <div>
+//          <div>
+//             <input type="text" ref={textRef} value={text} onChange={handleOnChange} />
+//             <button type="button" onClick={handleOnClick}>
+//                작성 완료
+//             </button>
+//          </div>
+//       </div>
+//    );
+// };
+
+// export default Body;
+
+import { useRef, useState } from 'react';
 
 const Body = () => {
-   const [number, setNumber] = useState(0);
+   const [text, setText] = useState("");
+   const textRef = useRef(null);
 
-   const onIncrease = () => {
-      setNumber(prev => prev + 1);
+   const handleOnChange = (e) => {
+      setText(e.target.value);
    };
 
-   const onDecrease = () => {
-      setNumber(prev => Math.max(prev - 1, 0));
+   const handleOnClick = () => {
+      if (text.trim() === '') {
+         alert('값을 입력해 주세요.');
+         textRef.current.focus();
+         return;
+      }
+
+      alert(`입력한 값: ${text}`);
+      setText('');
+      textRef.current.focus();
    };
 
    return (
       <div>
-         <div>{number}</div>
-            <Viewer number={number} />
-
-            <div>
-               <button type="button" onClick={onDecrease} disabled={number === 0}> - </button>
-               <button type="button" onClick={onIncrease}> + </button>
-         </div>
+         <input type="text" ref={textRef} value={text} onChange={handleOnChange} />
+         <button type="button" onClick={handleOnClick}>
+            작성 완료
+         </button>
       </div>
    );
 };
