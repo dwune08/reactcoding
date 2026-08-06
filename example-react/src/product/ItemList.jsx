@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-const ItemList = ({items, calcTotalPrice}) => {
+const ItemList = ({ items }) => {
 
    return (
       <div className="row justify-content-center">
@@ -19,9 +19,6 @@ const ItemList = ({items, calcTotalPrice}) => {
                   ))}
                </tbody>
             </table>
-         </div>
-         <div className="col-8 text-end">
-            총합계: {calcTotalPrice.toLocaleString()} 원
          </div>
       </div>
    );
