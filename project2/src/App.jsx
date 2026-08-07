@@ -34,11 +34,94 @@
 
 // export default App
 
-import { useState, useRef } from "react";
+// import './App.css';
+// import TestComponent from './example/TestComponent';
+
+// const App = () => {
+//   return (
+//     <div className='App'>
+//       <TestComponent />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+// import { useState, useRef } from "react";
+// import './App.css';
+// import Header from './components/Header';
+// import TodoEditor from './components/TodoEditor';
+// import TodoList from './components/TodoList';
+
+// const mockTodo = [
+//   {
+//     id: 0,
+//     isDone: false,
+//     content: "React 공부하기",
+//     createdDate: new Date().getTime(),
+//   },
+//   {
+//     id: 1,
+//     isDone: false,
+//     content: "빨래 널기",
+//     createdDate: new Date().getTime(),
+//   },
+//   {
+//     id: 2,
+//     isDone: false,
+//     content: "노래 연습하기",
+//     createdDate: new Date().getTime(),
+//   },
+// ];
+
+// const App = () => {
+//   const [todo, setTodo]=useState(mockTodo);
+//   const idRef=useRef(3);
+
+//   const onCreate = (content) => {
+//     const newItem = {
+//       id: idRef.current,
+//       content,
+//       isDone:false,
+//       createdDate: new Date().getTime(),
+//     };
+//     setTodo([...todo, newItem]);
+//     idRef.current += 1;
+//   };
+
+//   const onUpdate = (targetId) => {
+//     setTodo(
+//       todo.map((it) =>
+//         it.id === targetId?{...it, isDone: !it.isDone } : it
+//       )
+//     );
+//   };
+
+//   const onDelete = (targetId) => {
+//     setTodo((todo) => 
+//       todo.filter((item) => item.id !== targetId)
+//     );
+//   };
+
+//   return (
+//     <div className='App'>
+//       <Header />
+//       <TodoEditor onCreate={onCreate}/>
+//       <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+import { useReducer, useRef } from "react";
 import './App.css';
 import Header from './components/Header';
 import TodoEditor from './components/TodoEditor';
 import TodoList from './components/TodoList';
+import todoReducer from "./reducers/todoReducer";
 
 const mockTodo = [
   {
@@ -62,35 +145,44 @@ const mockTodo = [
 ];
 
 const App = () => {
-  const [todo, setTodo]=useState(mockTodo);
+  const [todo, dispatch]=useReducer(todoReducer, mockTodo);
   const idRef=useRef(3);
 
   const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      content,
-      isDone:false,
-      createdDate: new Date().getTime(),
-    };
-    setTodo([...todo, newItem]);
+    dispatch({
+      type:"CREATE",
+      newItem:{
+        id: idRef.current,
+        content,
+        isDone:false,
+        createdDate: new Date().getTime(),
+      },
+    });
     idRef.current += 1;
   };
 
   const onUpdate = (targetId) => {
-    setTodo(
-      todo.map((it) =>
-        it.id === targetId?{...it, isDone: !it.isDone } : it
-      )
-    );
+    dispatch({
+      type:"UPDATE",
+      targetId,
+    });
+  };
+
+  const onDelete = (targetId) => {
+    dispatch({
+      type:"DELETE",
+      targetId,
+    });
   };
 
   return (
     <div className='App'>
       <Header />
       <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo} onUpdate={onUpdate}/>
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
   );
 };
 
 export default App;
+
