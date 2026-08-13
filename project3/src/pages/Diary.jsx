@@ -1,7 +1,10 @@
 import { useParams } from "react-router";
+import useDiary from "../hooks/useDiary";
 
 const Diary = () => {
-   const {id}=useParams();
+   const { id }=useParams();
+   const data = useDiary(id);
+   console.log(data);
 
    return (
       <div>
