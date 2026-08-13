@@ -1,6 +1,39 @@
+import { useContext } from "react";
+import { useParams, useNavigate } from "react-router";
+import useDiary from "../hooks/useDiary";
+import Button from "../components/Button";
+import Header from "../components/Header";
+import { DiaryDispatchContext } from "../context/DiaryContext";
+
 const Edit = () => {
+   const { id } = useParams();
+   const data = useDiary(id);
+   const navigate = useNavigate();
+   const { onDelete } = useContext(DiaryDispatchContext);
+
+   const goBack = () => {
+      navigate(-1);
+   };
+
+   const onClickDelete = () => {
+      if(window.confirm("일기를 정말 삭제할까요? 다시 복구되지 않아요!")) {
+         onDelete(Number(id));
+         navigate("/", {replace:true});
+      }
+   };
+
+   if(!data) {
+      return <div>일기를 불러오는 중...</div>
+   }
+
    return (
-      <div>Edit 페이지</div>
+      <div>
+         <Header 
+            title="일기 수정하기"
+            leftChild={<Button text="<뒤로 가기" onClick={goBack} />}
+            rightChild={<Button text="삭제하기" type="negative" onClick={onClickDelete} />}
+         />
+      </div>
    );
 };
 
