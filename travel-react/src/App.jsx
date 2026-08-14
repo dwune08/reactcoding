@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Travel from './pages/Travel';
 import Edit from './pages/Edit';
+import StarRating from './components/starRating';
 
 const App = () => {
   return (
