@@ -154,14 +154,34 @@ export default App;
 
 // export default App;
 
-import ItemMain from "./product/ItemMain";
+// import ItemMain from "./product/ItemMain";
+
+// const App = () => {
+//   return (
+//     <div className = "container mt-5">
+//       <ItemMain />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+import { useEffect } from 'react';
+
+const url = 'http://localhost:8080/api/todos/100';
 
 const App = () => {
+  useEffect(()=> {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => console.log(error));
+  }, []);
+
   return (
-    <div className = "container mt-5">
-      <ItemMain />
-    </div>
+    <div className="App"></div>
   );
 };
-
 export default App;
