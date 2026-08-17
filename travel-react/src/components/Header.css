@@ -1,0 +1,21 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 2px solid #f1f5f9;
+  margin-bottom: 24px;
+}
+
+.Header .header_title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a202c;
+}
+
+.Header .header_left,
+.Header .header_right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

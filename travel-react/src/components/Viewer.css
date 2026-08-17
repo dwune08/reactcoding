@@ -1,0 +1,92 @@
+.Viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* 카드 공통 스타일 */
+.Viewer section {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+/* 1. 상단 카드: 여행지 - 별점 */
+.Viewer .title_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.Viewer .title_section .destination {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.Viewer .title_section .rating_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* 2. 중간 카드: 여행 기간 */
+.Viewer .date_section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Viewer .date_section h4,
+.Viewer .content_section h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.Viewer .date_section .date_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Viewer .date_section .date_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.Viewer .date_section .duration_badge {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 10px;
+  border-radius: 14px;
+}
+
+/* 3. 하단 카드: 여행 기록 */
+.Viewer .content_section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #ffffff; /* 본문 카드는 흰색 배경으로 구분 */
+}
+
+.Viewer .content_section .content_wrapper {
+  min-height: 180px;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #334155;
+}
+
+.Viewer .content_section .content_wrapper p {
+  margin: 0;
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+}

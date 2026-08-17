@@ -1,0 +1,95 @@
+.TravelItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.TravelItem:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* 클릭 영역 전체 가로 정렬 */
+.TravelItem .info_section {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+  gap: 16px;
+}
+
+/* 1. 여행지 이름 + N박M일 뱃지 */
+.TravelItem .info_section .title_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 2.2;
+  min-width: 0;
+}
+
+.TravelItem .info_section .destination {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.TravelItem .info_section .duration_badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2563eb;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 2. 날짜 영역 (가운데 정렬 및 고정 폭 유지) */
+.TravelItem .info_section .date_wrapper {
+  font-size: 14px;
+  color: #64748b;
+  flex: 2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 3. 별점 영역 */
+.TravelItem .info_section .rating_wrapper {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 4. 수정/삭제 버튼 영역 */
+.TravelItem .button_section {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.TravelItem .button_section button {
+  white-space: nowrap;
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #475569;
+  transition: background-color 0.2s;
+}
+
+.TravelItem .button_section button:hover {
+  background-color: #f1f5f9;
+}

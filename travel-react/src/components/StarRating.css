@@ -1,13 +1,15 @@
 .star-rating {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
-.stars {
+.star-rating .stars {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 2px; 
 }
 
-.rating {
-  position: absolute;
-  top: 0;
+.star-rating .stars svg {
+  display: block;
+  flex-shrink: 0;
 }

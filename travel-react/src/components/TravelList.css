@@ -1,0 +1,52 @@
+.TravelList {
+  width: 100%;
+}
+
+/* 상단 컨트롤 영역 (드롭다운 & 작성 버튼) */
+.TravelList .menu_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* 좌측 정렬 드롭다운 */
+.TravelList .menu_wrapper .left_col select {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+
+.TravelList .menu_wrapper .left_col select:focus {
+  border-color: #94a3b8;
+}
+
+/* 우측 새 여행 기록 버튼 */
+.TravelList .menu_wrapper .right_col .btn_new {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.TravelList .menu_wrapper .right_col .btn_new:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* 리스트 컨테이너 */
+.TravelList .list_wrapper {
+  display: flex;
+  flex-direction: column;
+}

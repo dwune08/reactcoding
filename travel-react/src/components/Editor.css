@@ -1,0 +1,116 @@
+.Editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.Editor .editor_section h4 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* 1행: 장소 + 별점 가로 배치 */
+.Editor .editor_row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.Editor .editor_row .destination_section {
+  flex: 2;
+}
+
+.Editor .editor_row .rating_section {
+  flex: 1;
+}
+
+/* 입력 필드 공통 */
+.Editor input[type="text"],
+.Editor input[type="date"],
+.Editor textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.Editor input:focus,
+.Editor textarea:focus {
+  border-color: #2563eb;
+}
+
+/* 별점 컨테이너 높이 정렬 */
+.Editor .rating_wrapper {
+  display: flex;
+  align-items: center;
+  height: 42px;
+}
+
+/* 2행: 날짜 입력 영역 */
+.Editor .date_section .date_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Editor .date_section .date_wrapper input[type="date"] {
+  flex: 1;
+}
+
+.Editor .date_section .date_wrapper .wave {
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* 내용 입력 영역 */
+.Editor .content_section textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* 하단 버튼 영역 */
+.Editor .bottom_section {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.Editor .bottom_section button {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.Editor .bottom_section .btn_cancel {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.Editor .bottom_section .btn_cancel:hover {
+  background-color: #e2e8f0;
+}
+
+.Editor .bottom_section .btn_submit {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.Editor .bottom_section .btn_submit:hover {
+  background-color: #1d4ed8;
+}
