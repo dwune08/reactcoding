@@ -1,16 +1,9 @@
-import { Outlet, useNavigate } from "react-router";
+import { Outlet } from "react-router";
 import BasicLayout from "../../layouts/BasicLayout";
+import useCustomMove from "../../hooks/useCustomMove";
 
 const IndexPage = () => {
-   const navigate = useNavigate();
-
-   const moveToList = () => {
-      navigate("list");
-   };
-
-   const moveToAdd = () => {
-      navigate("add");
-   };
+   const {moveToList, moveToAdd} = useCustomMove();
 
    return (
       <BasicLayout>
