@@ -36,7 +36,7 @@ export const postAdd = async (todoObject) => {
 
 // Todo 삭제
 export const deleteOne = async (no) => {
-   const response = await delete(`${prefix}/${no}`, todo);
+   const response = await axios.delete(`${prefix}/${no}`);
 
    return response.data;
 };
