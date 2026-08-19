@@ -13,7 +13,7 @@ const initState = {
 
 const ModifyComponent = ({ no }) => {
    const [todo, setTodo] = useState(initState);
-   const { moveToList } = useCustomMove();
+   const { moveToList, moveToRead } = useCustomMove();
    const [result, setResult] = useState(null);
    
    useEffect(() => {
@@ -61,6 +61,14 @@ const ModifyComponent = ({ no }) => {
 
    const makeReadOnly = (title, value) => (
       <div className="flex justify-center">
+         {result !== null && (
+            <ResultModal
+               title="처리 결과"
+               content={result}
+               callbackFn={closeModal}
+            />
+         )}
+
          <div className="relative mb-4 flex w-full flex-wrap items-stretch">
             <div className="w-1/5 p-6 text-right font-bold">
                {title}
@@ -93,30 +101,19 @@ const ModifyComponent = ({ no }) => {
 
    const closeModal = () => {
       if (result === "Deleted") {
-         moveToList({page: 1});   
-      } else {
          moveToList();   
+      } else {
+         moveToRead(no);   
       }
-      setResult(null);
    };
 
    return (
       <div className="m-2 mt-10 border-2 border-sky-200 p-4">
-         {result && (
-            <ResultModal
-               title="Modify Result"
-               content={`${todo.no}
-                  ${result === "Modified" ? "Updated" : "Deleted"}`}
-               callbackFn={closeModal}
-            />
-         )}
-         
          {makeReadOnly("번호", todo.no)}
          {makeReadOnly("작성자", todo.writer)}
 
          {makeInput("내용", "title", "text", todo.title)}
          {makeInput("마감일", "dueDate", "date", todo.dueDate)}
-
 
          {/* 완료 여부 */}
          <div className="flex justify-center">

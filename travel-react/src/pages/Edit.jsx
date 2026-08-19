@@ -1,33 +1,46 @@
-import { useContext } from 'react';
 import { useParams } from "react-router";
 import Editor from "../components/Editor";
 import Header from "../components/Header";
 import useTravel from "../hooks/useTravel";
 import { usePageNavigation } from "../hooks/usePageNavigation";
-import { TravelDispatchContext } from "../context/TravelContext";
+import { putOne, deleteOne } from "../api/travelApi";
 
 const Edit = () => {
    const { id } = useParams();
    const data = useTravel(id);
-   const { onDelete, onUpdate } = useContext(TravelDispatchContext);
    const { goBack, goHome } = usePageNavigation();
 
    if (!data) {
       return <div className="loading">기록을 불러오는 중...</div>;
    }
 
-   const onClickDelete = () => {
+   const onClickDelete = async () => {
       if (window.confirm("기록을 정말 삭제하시겠습니까?")) {
-         onDelete(Number(id));
-         goHome();
+         try {
+            await deleteOne(id);
+            goHome();
+         } catch (error) {
+            console.error("삭제 실패:", error);
+            alert("삭제에 실패했습니다.");
+         }
       }
    };
 
-   const onSubmit = (formData) => {
+   const onSubmit = async (formData) => {
       if (window.confirm("기록을 정말 수정하시겠습니까?")) {
-         const { destination, startDate, endDate, rating, content } = formData;
-         onUpdate(Number(id), destination, startDate, endDate, rating, content);
-         goHome();
+         try {
+            const updatePayload = {
+               ...formData,
+               id: Number(id),
+            };
+            console.log("전송 데이터: ", updatePayload);
+            
+            await putOne(updatePayload);
+            goHome();
+         } catch(error) {
+            console.error("수정 실패:", error);
+            alert("수정에 실패했습니다.");
+         }   
       }
    };
 

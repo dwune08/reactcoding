@@ -6,8 +6,8 @@ import { getFormattedDate, getTravelDuration } from "../utils/util";
 const TravelItem = ({ id, destination, startDate, endDate, rating }) => {
   const navigate = useNavigate();
 
-  const formattedStart = getFormattedDate(new Date(Number(startDate)));
-  const formattedEnd = getFormattedDate(new Date(Number(endDate)));
+  const formattedStart = getFormattedDate(new Date(startDate));
+  const formattedEnd = getFormattedDate(new Date(endDate));
   const durationText = getTravelDuration(startDate, endDate);
 
   const goDetail = () => {

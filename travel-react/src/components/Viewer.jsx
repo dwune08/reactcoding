@@ -3,8 +3,8 @@ import StarRating from "./StarRating";
 import { getTravelDuration, getFormattedDate } from "../utils/util";
 
 const Viewer = ({ destination, startDate, endDate, rating, content }) => {
-  const formattedStart = getFormattedDate(new Date(Number(startDate)));
-  const formattedEnd = getFormattedDate(new Date(Number(endDate)));
+  const formattedStart = getFormattedDate(new Date(startDate));
+  const formattedEnd = getFormattedDate(new Date(endDate));
   const durationText = getTravelDuration(startDate, endDate);
 
   return (

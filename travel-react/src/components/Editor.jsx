@@ -3,7 +3,15 @@ import { useState, useEffect } from "react";
 import StarRating from './StarRating';
 import { usePageNavigation } from '../hooks/usePageNavigation.js';
 
-const formatDateForInput = (dateObj) => {
+const formatDateForInput = (targetDate) => {
+   if(!targetDate) return "";
+   if(typeof targetDate === "string" && targetDate.length === 10) {
+      return targetDate;
+   }
+
+   const dateObj = new Date(targetDate);
+   if(isNaN(dateObj.getTime())) return "";
+
    const year = dateObj.getFullYear();
    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
    const date = String(dateObj.getDate()).padStart(2, "0");
@@ -25,8 +33,9 @@ const Editor = ({ initData, onSubmit, onCancel }) => {
       if (initData) {
          setState({
             ...initData,
-            startDate: formatDateForInput(new Date(Number(initData.startDate))),
-            endDate: formatDateForInput(new Date(Number(initData.endDate))),
+            content: initData.content || "",
+            startDate: formatDateForInput(new Date(initData.startDate)),
+            endDate: formatDateForInput(new Date(initData.endDate)),
          });
       }
    }, [initData]);
